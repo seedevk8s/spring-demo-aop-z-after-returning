@@ -26,6 +26,9 @@ public class MyDemoLoggingAspect {
 		public void afterReturningFindAccountsAdvice(
 				JoinPoint theJoinPoint, List<Account> result) {
 			
+			// print out which method we are advising on
+			
+			// print out the results of the method call
 		}
 	
 	
