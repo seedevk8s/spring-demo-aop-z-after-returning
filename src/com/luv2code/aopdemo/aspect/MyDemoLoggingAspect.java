@@ -1,6 +1,9 @@
 package com.luv2code.aopdemo.aspect;
 
+import java.util.List;
+
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -13,6 +16,20 @@ import com.luv2code.aopdemo.Account;
 @Component
 @Order(2)
 public class MyDemoLoggingAspect {
+	
+		// add a new advice for @AfterReturning on the findAccounts method
+		
+		@AfterReturning(
+				pointcut="* com.luv2code.aopdemo.dao.AccountDAO.findAccounts(..)",
+				returning="result"
+				)
+		public void afterReturningFindAccountsAdvice(
+				JoinPoint theJoinPoint, List<Account> result) {
+			
+		}
+	
+	
+	
 	
 		@Before("com.luv2code.aopdemo.aspect.LuvAopExpressions.forDaoPackateNoGetterSetter()")
 		public void beforeAddAccountAdvice(JoinPoint theJoinPoint) {	
